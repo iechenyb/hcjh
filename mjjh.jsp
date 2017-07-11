@@ -93,7 +93,9 @@
 						<option value="8">8</option>
 						<option value="9">9</option>
 				</select>
-					<button class="am-btn am-btn-primary" ng-click="loadData();">刷新</button>
+					<button class="am-btn am-btn-primary" ng-click="loadData();">获取</button><br>
+					<button class="am-btn am-btn-primary" id="start" ng-click="startTimer();">开启自动刷新</button>
+					<button class="am-btn am-btn-primary" id="stop" ng-click="stopTimer();">停止自动刷新</button>
 				</td>
 			</tr>
 			<tr>
@@ -115,8 +117,23 @@
 	<script>
 		var app = angular.module('app', []);
 		app.controller('controller', main);
+		var page ;
+		var t1;
 		function main($scope, $q, $http) {
 			$scope.CodeNumber = 1;
+			page = $scope;
+			$scope.startTimer=function(){
+				t1 = window.setInterval(load,10000); 
+				$("#start").attr("disabled",true);
+				$("#stop").attr("disabled",false);
+				$('#stop').removeAttr("disabled"); 
+			}
+			$scope.stopTimer=function(){
+				window.clearInterval(t1); 
+				$("#start").attr("disabled",false);
+				$('#start').removeAttr("disabled"); 
+				$("#stop").attr("disabled",true);
+			}
 			$scope.path = $("#basePath").val();
 			$scope.loadData = function() {
 				var form = new FormData($('#dataForm')[0]);
@@ -163,6 +180,24 @@
 						}
 					});
 
+		}
+		function load(){
+			   var form = new FormData($('#dataForm')[0]);
+				$.ajax({
+					url : page.path + "getData.php",
+					processData : false,
+					contentType : false,
+					async : true,
+					type : "post",
+					data : form,
+					dataType : 'json',
+					success : function(data) {
+						$('#content').html(data.rs);
+					},
+					complete : function(data) {
+
+					}
+				});
 		}
 	</script>
 	<script type="text/javascript"
