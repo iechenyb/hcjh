@@ -11,12 +11,9 @@ import javax.ws.rs.core.MediaType;
  *  
  * @author pavithra 
  *  
- */  
-  
+ */
 // 这里@Path定义了类的层次路径。  
 // 指定了资源类提供服务的URI路径。  
-/*http://localhost:8088/springmvc/rest/UserInfoService/name/iechenyb
-http://localhost:8088/springmvc/rest/UserInfoService/age/20*/
 @Path("API/User/")  
 public class UserInfo {  
     // @GET表示方法会处理HTTP GET请求  
@@ -43,11 +40,11 @@ public class UserInfo {
     @GET  
     @Path("/json/{j}")  
     @Produces(MediaType.APPLICATION_JSON)  
-    public String userJson(@PathParam("j")  
+    public Map<String, Integer> userJson(@PathParam("j")  
     int j) {  
         int age = j;  
         Map<String, Integer> map= new HashMap<String, Integer>();
         map.put("age",age);
-        return JSONObject.fromObject(map).toString();  
+        return map;  
     }  
 }  

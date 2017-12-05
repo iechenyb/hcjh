@@ -10,6 +10,12 @@
     <listener>
     	<listener-class>com.cyb.listener.WebListener</listener-class>
     </listener>
+      <listener>
+            <listener-class>com.cyb.listener.SessionLisener</listener-class>
+        </listener>
+        <session-config>
+          <session-timeout>1</session-timeout>
+        </session-config>
 	<filter>
     	<description>
     	</description>

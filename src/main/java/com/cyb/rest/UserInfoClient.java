@@ -15,9 +15,10 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
  */  
 public class UserInfoClient {  
   
-    public static final String BASE_URI = "http://localhost:8088/springmvc";  
+    public static final String BASE_URI = "http://localhost:8080/hcjh";  
     public static final String PATH_NAME = "/API/User/name/";  
     public static final String PATH_AGE = "/API/User/age/";  
+    public static final String PATH_json = "/API/User/json/";  
   
     public static void main(String[] args) {  
   
@@ -37,6 +38,11 @@ public class UserInfoClient {
         System.out.println("Client Response \n"  
                 + getClientResponse(ageResource));  
         System.out.println("Response \n" + getResponse(ageResource));  
+        
+        WebResource jsonResource = resource.path("rest").path(PATH_json + age);  
+        System.out.println("Client Response \n"  
+                + getClientResponse(jsonResource));  
+        System.out.println("Response \n" + getResponse(jsonResource));  
     }  
   
     /** 
