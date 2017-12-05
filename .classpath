@@ -36,6 +36,5 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/thumbelina.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jaxb-impl-2.2.11.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/httpclient-4.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
